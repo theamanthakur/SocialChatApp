@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215312684881",
+    "project_id": "ritz7chat",
+    "storage_bucket": "ritz7chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215312684881:android:4dd3443b42883da1e1e570",
+        "android_client_info": {
+          "package_name": "com.ttl.ritz7chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215312684881-1035pjcjvma63e7mgbtasv4u71ssru0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzaSITij2kvqfpEl9vaK3udlFwSXqusAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215312684881-1035pjcjvma63e7mgbtasv4u71ssru0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
