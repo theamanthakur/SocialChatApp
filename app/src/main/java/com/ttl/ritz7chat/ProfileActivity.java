@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -170,7 +171,8 @@ public class ProfileActivity extends AppCompatActivity {
                 dialog.show();
                 ////----------------- end-------------////////////
 
-                Uri resulturi = result.getUri();
+                assert result != null;
+                Uri resulturi = result.getOriginalUri();
                 imageProfile.setImageURI(resulturi);
                 StorageReference filepath = profileImageRef.child(getCurrUserID + ".jpg");
 //                filepath.putFile(resulturi).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -210,8 +212,19 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                         if(task.isSuccessful()){
+                            String dlUrl = "";
                             Toast.makeText(ProfileActivity.this, "Profile Pic Uploaded", Toast.LENGTH_SHORT).show();
-                            final String downloaduri = task.getResult().toString();
+                            final String downloaduri = filepath.getDownloadUrl().toString();
+                            Toast.makeText(ProfileActivity.this, ""+downloaduri, Toast.LENGTH_SHORT).show();
+
+//                            filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                @Override
+//                                public void onSuccess(Uri uri) {
+//                                    Uri downloadUrl = uri;
+//                                    dlUrl = downloadUrl.toString()
+//                                }
+//                            });
+
                             databaseReference.child("UsersChat").child(getCurrUserID).child("image")
                                     .setValue(downloaduri)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {

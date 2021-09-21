@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.ttl.ritz7chat.activities.SignInActivity;
+import com.ttl.ritz7chat.activities.VideoCallActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
  * create an instance of this fragment.
  */
 public class SettingsFragment extends Fragment {
-    CardView profile_card, card_request, card_logout, card_about;
+    CardView profile_card, card_request, card_logout, card_about, card_video_call;
     FirebaseAuth mAuth;
 
     public SettingsFragment() {
@@ -46,6 +48,7 @@ public class SettingsFragment extends Fragment {
         card_request = (CardView) view.findViewById(R.id.request_card);
         card_about = (CardView) view.findViewById(R.id.about_card);
         card_logout = (CardView) view.findViewById(R.id.logout_card);
+        card_video_call = (CardView) view.findViewById(R.id.video_call_card);
         setListener();
         return view;
     }
@@ -69,6 +72,26 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 mAuth.signOut();
                 startActivity(new Intent(requireContext(),loginActivity.class));
+            }
+        });
+        card_video_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireContext(), SignInActivity.class));
+            }
+        });
+
+        card_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireContext(), findFriendActivity.class));
+            }
+        });
+
+        card_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireContext(), RequestsActivity.class));
             }
         });
 

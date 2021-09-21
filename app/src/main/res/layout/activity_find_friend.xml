@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".findFriendActivity">
+
+    <TextView
+        android:id="@+id/text_all_users"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="All Members"
+        android:layout_margin="20dp"
+        style="@style/heading_bold_20"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:id="@+id/find_friend_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/text_all_users"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>

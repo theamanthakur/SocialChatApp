@@ -68,7 +68,7 @@ public class ChatsFragment extends Fragment {
 //        mAuth = FirebaseAuth.getInstance();
 //        currentUserID = mAuth.getCurrentUser().getUid();
         FirebaseApp.initializeApp(getContext());
-        ChatsRef = FirebaseDatabase.getInstance().getReference().child("Contacts").child("OWEr9oSGnxdwyUDeMZ3oGcViULl2");
+        ChatsRef = FirebaseDatabase.getInstance().getReference().child("Contacts");
         UsersRef = FirebaseDatabase.getInstance().getReference().child("UsersChat");
 
 
@@ -169,8 +169,8 @@ public class ChatsFragment extends Fragment {
         public ChatsViewHolder(@NonNull View itemView) {
             super(itemView);
             profileImage = itemView.findViewById(R.id.users_profile_image);
-            userStatus = itemView.findViewById(R.id.user_status);
-            userName = itemView.findViewById(R.id.user_profile_name);
+            userStatus = itemView.findViewById(R.id.subtext_user_name);
+            userName = itemView.findViewById(R.id.text_user_name);
 
         }
     }
