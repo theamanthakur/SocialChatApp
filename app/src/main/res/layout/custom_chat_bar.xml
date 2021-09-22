@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    >
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/custom_profile_image"
         android:layout_width="47dp"
         android:layout_height="47dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:src="@drawable/proimg"
         android:cropToPadding="true"
-        android:layout_marginRight="10dp"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         />
 
     <TextView
@@ -23,10 +23,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
         android:text="Display UserName"
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
         android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/custom_profile_image"
+        app:layout_constraintTop_toTopOf="@+id/custom_profile_image"
+
         />
 
 
@@ -36,11 +40,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/custom_profile_name"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="20dp"
         android:text="Last Seen"
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
         android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/custom_profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/custom_profile_name"
         />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

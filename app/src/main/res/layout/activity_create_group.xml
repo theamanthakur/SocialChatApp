@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white20"
+    tools:context=".CreateGroupActivity">
+
+    <include
+        android:id="@+id/group_chat_toolbar"
+        layout="@layout/app_bar_layout">
+    </include>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/groupIcon"
+        android:layout_below="@+id/group_chat_toolbar"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/group"
+        app:layout_constraintTop_toBottomOf="@+id/group_chat_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/groupName"
+        android:layout_below="@+id/groupIcon"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:textSize="16dp"
+        android:hint="Group Title"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:elevation="2dp"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/groupIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+    <EditText
+        android:id="@+id/groupDescription"
+        android:minHeight="100dp"
+        android:gravity="top"
+        android:inputType="textMultiLine|textCapSentences"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:elevation="2dp"
+        android:background="@color/white"
+        android:layout_below="@+id/groupName"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:padding="10dp"
+        android:textSize="16dp"
+        android:hint="Group Title"
+        app:layout_constraintTop_toBottomOf="@id/groupName"
+
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCreateGroup"
+        android:text="Create Group"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:paddingHorizontal="40dp"
+        android:layout_below="@+id/groupDescription"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/groupDescription"
+        android:background="@drawable/buttons"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

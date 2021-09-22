@@ -64,21 +64,12 @@ public class MainActivity extends AppCompatActivity {
 //            currentUserID = mAuth.getCurrentUser().getUid();
 //            Toast.makeText(this, "" + currentUserID, Toast.LENGTH_SHORT).show();
 //        }
-
-
         databaseReference = FirebaseDatabase.getInstance().getReference();
         toolbar = findViewById(R.id.main_page_toolbar);
-//        mAuth = FirebaseAuth.getInstance();
-//        ChatsRef = FirebaseDatabase.getInstance().getReference().child("Contacts").child(currentUserID);
-//        getSupportActionBar().setTitle("Ritz7Chat");
-
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
-//        getActionBar().setHomeButtonEnabled(true);
         toolbar.setTitle("Ritz7Chat");
 
 
     }
-
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -104,21 +95,20 @@ public class MainActivity extends AppCompatActivity {
                         default:
                             selectedFragment = new ChatsFragment();
                     }
-                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-                                selectedFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
+                            selectedFragment).commit();
 
-                        return true;
-                    }
+                    return true;
+                }
             };
 
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser ==  null){
+        if (currentUser == null) {
             sendToLoginActivity();
-        }
-        else {
+        } else {
 //            updateUserStatus("online");
 //            Toast.makeText(this, ""+currentUserID, Toast.LENGTH_SHORT).show();
             veifyUserExistance();
@@ -130,8 +120,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 //        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null)
-        {
+        if (currentUser != null) {
 //            updateUserStatus("offline");
         }
     }
@@ -140,8 +129,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 //        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null)
-        {
+        if (currentUser != null) {
 //            updateUserStatus("offline");
         }
     }
@@ -151,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.child("UsersChat").child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if((snapshot.child("name").exists())){
+                if ((snapshot.child("name").exists())) {
                     final String retName = snapshot.child("name").getValue().toString();
 //                    Toast.makeText(MainActivity.this, "Welcome " + retName, Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     sendToSettingActivity();
                 }
             }
@@ -167,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendToLoginActivity() {
-        Intent intent = new Intent(MainActivity.this,loginActivity.class);
+        Intent intent = new Intent(MainActivity.this, loginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -176,27 +164,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.options_menu,menu);
+        getMenuInflater().inflate(R.menu.options_menu, menu);
         return true;
     }
-
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
-        if(item.getItemId() == R.id.main_logout_option){
+        if (item.getItemId() == R.id.main_logout_option) {
 //            updateUserStatus("offline");
             mAuth.signOut();
             sendToLoginActivity();
         }
-        if(item.getItemId() == R.id.main_settings_option){
+        if (item.getItemId() == R.id.main_settings_option) {
             sendToSettingActivity();
         }
-        if(item.getItemId() == R.id.main_create_group_option){
+        if (item.getItemId() == R.id.main_create_group_option) {
 //            startActivity(new Intent(this,CreateGroupActivity.class));
         }
-        if(item.getItemId() == R.id.main_find_user_option){
+        if (item.getItemId() == R.id.main_find_user_option) {
             SendUserToFindFriendsActivity();
         }
         return true;
@@ -217,9 +204,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String groupName = groupNameText.getText().toString();
-                if (TextUtils.isEmpty(groupName)){
+                if (TextUtils.isEmpty(groupName)) {
                     Toast.makeText(MainActivity.this, "Please Enter group Name...", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     createNewGroup(groupName);
                 }
             }
@@ -238,21 +225,20 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.child("Groups").child(groupName).setValue("").addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(MainActivity.this, groupName+ "group created successfully..", Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, groupName + "group created successfully..", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     private void sendToSettingActivity() {
-        Intent intentSetting = new Intent(MainActivity.this,ProfileActivity.class);
+        Intent intentSetting = new Intent(MainActivity.this, ProfileActivity.class);
         startActivity(intentSetting);
 
     }
 
-    private void updateUserStatus(String state)
-    {
+    private void updateUserStatus(String state) {
         currentUserID = mAuth.getCurrentUser().getUid();
         String saveCurrentTime, saveCurrentDate;
 
@@ -287,11 +273,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                doubleBackToExitPressedOnce=false;
+                doubleBackToExitPressedOnce = false;
             }
         }, 2000);
     }
-
 
 
 }

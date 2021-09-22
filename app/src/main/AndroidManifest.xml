@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ritz7Chat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RequestsActivity"></activity>
+        <activity android:name=".CreateGroupActivity"></activity>
+        <activity android:name=".GroupChatActivity" />
+        <activity android:name=".RequestsActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".findFriendActivity" />
         <activity android:name=".activities.SignUpActivity" />

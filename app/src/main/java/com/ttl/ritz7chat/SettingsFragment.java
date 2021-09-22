@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.ttl.ritz7chat.activities.SignInActivity;
@@ -20,7 +21,7 @@ import com.ttl.ritz7chat.activities.VideoCallActivity;
  * create an instance of this fragment.
  */
 public class SettingsFragment extends Fragment {
-    CardView profile_card, card_request, card_logout, card_about, card_video_call;
+    CardView profile_card, card_request, card_logout, card_about, card_video_call, card_group;
     FirebaseAuth mAuth;
 
     public SettingsFragment() {
@@ -49,6 +50,7 @@ public class SettingsFragment extends Fragment {
         card_about = (CardView) view.findViewById(R.id.about_card);
         card_logout = (CardView) view.findViewById(R.id.logout_card);
         card_video_call = (CardView) view.findViewById(R.id.video_call_card);
+        card_group = (CardView) view.findViewById(R.id.create_group_card);
         setListener();
         return view;
     }
@@ -92,6 +94,14 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(requireContext(), RequestsActivity.class));
+            }
+        });
+
+        card_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "click", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(requireContext(), CreateGroupActivity.class));
             }
         });
 
