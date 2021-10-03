@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -114,9 +115,12 @@ public class ChatsFragment extends Fragment {
                                         if (state.equals("online"))
                                         {
                                             holder.userStatus.setText("online");
+                                            holder.onlineImage.setVisibility(View.VISIBLE);
+
                                         }
                                         else if (state.equals("offline"))
                                         {
+                                            holder.onlineImage.setVisibility(View.GONE);
                                             holder.userStatus.setText("Last Seen: " + date + " " + time);
                                         }
                                     }
@@ -164,6 +168,7 @@ public class ChatsFragment extends Fragment {
 
     public static class  ChatsViewHolder extends RecyclerView.ViewHolder{
         CircleImageView profileImage;
+        ImageView onlineImage;
         TextView userStatus, userName;
 
         public ChatsViewHolder(@NonNull View itemView) {
@@ -171,6 +176,7 @@ public class ChatsFragment extends Fragment {
             profileImage = itemView.findViewById(R.id.users_profile_image);
             userStatus = itemView.findViewById(R.id.subtext_user_name);
             userName = itemView.findViewById(R.id.text_user_name);
+            onlineImage = itemView.findViewById(R.id.online_iv);
 
         }
     }

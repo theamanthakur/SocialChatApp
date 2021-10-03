@@ -94,6 +94,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:padding="10dp"
+            android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnFiles"
             app:layout_constraintEnd_toStartOf="@+id/send_msg"
