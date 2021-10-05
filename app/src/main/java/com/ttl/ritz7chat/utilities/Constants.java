@@ -31,7 +31,7 @@ public class Constants {
     public static final String REMOTE_MSG_INVITATION_CANCELLED = "cancelled";
 
     public static final String REMOTE_MSG_MEETING_ROOM = "meetingRoom";
-    public static final String API_KEY_SERVER = "AAAAMiGi11E:APA91bEFxlxMnCH6LmkEimubNyP22qvoN-4Zaw5q1-n0tvwjBNzei44J5DTZVs2lNiqe1C_NbqVd-_VrIymTyGPc4LZummCH8DCDfg_yl6QjL71cGrl5lSpUZVbyKnbG4Yi2hAVa2jhP";
+    public static final String API_KEY_SERVER = "put_your_firebase_could token here";
 
     public static HashMap<String, String> getRemoteMessageHeaders() {
         HashMap<String, String> headers = new HashMap<>();
